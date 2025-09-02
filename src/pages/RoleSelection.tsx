@@ -28,7 +28,7 @@ const roles = [
       "Submit preferences",
       "Track workload"
     ],
-    available: false
+    available: true
   },
   {
     id: "student",
@@ -41,7 +41,7 @@ const roles = [
       "Access course details",
       "Download schedule"
     ],
-    available: false
+    available: true
   }
 ];
 
@@ -51,9 +51,10 @@ export default function RoleSelection() {
   const handleRoleSelect = (roleId: string) => {
     if (roleId === "admin") {
       navigate("/admin");
-    } else {
-      // For now, only admin is available
-      return;
+    } else if (roleId === "faculty") {
+      navigate("/faculty");
+    } else if (roleId === "student") {
+      navigate("/student");
     }
   };
 
@@ -138,7 +139,7 @@ export default function RoleSelection() {
         {/* Note */}
         <div className="mt-8 text-center">
           <p className="text-sm text-muted-foreground">
-            Currently showing admin access only. Faculty and student portals are under development.
+            Select your role to access the appropriate dashboard and features.
           </p>
         </div>
       </div>
